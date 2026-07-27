@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="auth-card">
+        <h1>Register</h1>
+        <p class="subtitle">Create your account before complaint prediction.</p>
+
+        <form method="POST" action="/register" class="form-grid">
+            <label for="full_name">Full Name</label>
+            <input id="full_name" name="full_name" type="text" required />
+
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="text" maxlength="10" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+
+            <label for="location">Location</label>
+            <input id="location" name="location" type="text" required />
+
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" required />
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required />
+
+            <button type="submit">Register</button>
+        </form>
+
+        {% if error %}
+        <div class="alert error">{{ error }}</div>
+        {% endif %}
+
+        <p class="small-text">Already registered? <a href="/login">Login</a></p>
+    </div>
+</body>
+</html>

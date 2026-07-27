@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Fraudulent Complaint Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="main-card">
+        <div class="top-row">
+            <div>
+                <h1>Admin Panel</h1>
+                <p class="subtitle">Welcome, <strong>{{ user_name }}</strong></p>
+                <p class="small-text">View submitted complaints and fraud detection results.</p>
+            </div>
+            <div class="action-row">
+                <a class="secondary-btn" href="/complaint">Back to Complaint Form</a>
+                <a class="secondary-btn" href="/logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Summary</h2>
+            <p class="small-text"><strong>Total Complaints:</strong> {{ total }}</p>
+            <p class="small-text"><strong>Genuine:</strong> {{ genuine_count }}</p>
+            <p class="small-text"><strong>Fraudulent:</strong> {{ fraud_count }}</p>
+        </div>
+
+        <div class="section">
+            <h2>Complaint Records</h2>
+            {% if complaints %}
+            <div class="matrix-wrap">
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Complaint</th>
+                            <th>Result</th>
+                            <th>Submitted At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in complaints %}
+                        <tr>
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.username }}</td>
+                            <td>{{ row.complaint_text }}</td>
+                            <td>{{ row.prediction }}</td>
+                            <td>{{ row.created_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="small-text">No complaints submitted yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
