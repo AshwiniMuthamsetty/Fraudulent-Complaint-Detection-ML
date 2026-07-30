@@ -99,7 +99,7 @@ http://127.0.0.1:5000
 Username: admin***
 Password: admin***
 ```
-⚠️ Change default credentials before deploying.
+ Change default credentials before deploying.
 
 ---
 ##  Dataset
